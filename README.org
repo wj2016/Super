@@ -1,0 +1,6 @@
+* jq
+#+BEGIN_SRC sh
+brew install jq
+echo '{"age":18}' | jq "."
+
+#+END_SRC
