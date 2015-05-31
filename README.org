@@ -1,6 +1,20 @@
 * jq
 #+BEGIN_SRC sh
 brew install jq
-echo '{"age":18}' | jq "."
+echo '{"age":18, "name":"Jia"}' | jq "."
+#+END_SRC
 
+* curl
+#+BEGIN_SRC sh
+curl google.com
+
+## -L redirect
+curl -L google.com
+
+## -v
+curl -v ifconfig.me
+curl -v ifconfig.me/all.json
+
+## -H add headers
+curl -v ifconfig.me/all.json -H "Accept-charset: utf-8"
 #+END_SRC
