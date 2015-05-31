@@ -13,7 +13,8 @@ curl -L google.com
 
 ## -v
 curl -v ifconfig.me
-curl -v ifconfig.me/all.json
+curl -v ifconfig.me/all.json | jq "."
+curl -v ifconfig.me/all.json | jq ".remote_host"
 
 ## -H add headers
 curl -v ifconfig.me/all.json -H "Accept-charset: utf-8"
