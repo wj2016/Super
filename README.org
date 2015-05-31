@@ -2,6 +2,15 @@
 #+BEGIN_SRC sh
 brew install jq
 echo '{"age":18, "name":"Jia"}' | jq "."
+
+cd ~/Super
+## sample json file
+mkdir sample_files
+cd sample_files
+curl -v http://bookapi.bignerdranch.com/courses.json > bnr_courses.json
+cat bnr_courses.json | jq ".courses"
+cat bnr_courses.json | jq ".courses[0]"
+cat bnr_courses.json | jq ".courses[0].title"
 #+END_SRC
 
 * curl
@@ -14,7 +23,6 @@ curl -L google.com
 ## -v
 curl -v ifconfig.me
 curl -v ifconfig.me/all.json | jq "."
-curl -v ifconfig.me/all.json | jq ".remote_host"
 
 ## -H add headers
 curl -v ifconfig.me/all.json -H "Accept-charset: utf-8"
