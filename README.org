@@ -65,3 +65,23 @@ vagrant halt
 vagrant destroy
 y
 #+END_SRC
+* PostgreSQL
+** Install PostgreSQL on Ubuntu 14.04
+#+BEGIN_SRC sh
+cd ~/Super/VMs/PostgreSQL
+vagrant up
+vagrant ssh
+wget http://ftp.postgresql.org/pub/source/v9.3.2/postgresql-9.3.2.tar.bz2
+tar xvfj postgresql-9.3.2.tar.bz2
+cd postgresql-9.3.2
+mkdir -p ${HOME}/Apps/postgresql-9.3.2
+ls ${HOME}/Apps/postgresql-9.3.2
+sudo apt-get install libreadline-dev
+./configure --prefix=${HOME}/Apps/postgresql-9.3.2
+make; make install
+ls ${HOME}/Apps/postgresql-9.3.2/bin
+
+## add bin to path
+which postgres
+
+#+END_SRC

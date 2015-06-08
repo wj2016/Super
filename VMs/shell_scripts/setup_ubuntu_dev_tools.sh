@@ -11,7 +11,8 @@ sudo apt-get install -y build-essential autoconf \
                      poppler-utils \
                      xsltproc git-core gitk gitg magit \
                      libssl-dev \
-                     curl htop tree
+                     curl htop tree \
+                     libreadline-dev
 
 echo "======================================================================="
 echo "   [OK] Setup Ubuntu Dev Tools"
