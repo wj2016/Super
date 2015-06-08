@@ -82,6 +82,128 @@ make; make install
 ls ${HOME}/Apps/postgresql-9.3.2/bin
 
 ## add bin to path
+echo 'export PATH=${HOME}/Apps/postgresql-9.3.2/bin:${PATH}' >> ~/.bashrc
 which postgres
 
 #+END_SRC
+** Initialize PostgresSQL
+#+BEGIN_SRC sh
+## Setup SQL Data directory
+export PGDATA=~/postgresql_data/
+rm    -rf  ${PGDATA}
+mkdir  -p  ${PGDATA}
+ls         ${PGDATA}
+initdb -D  ${PGDATA}
+ls ${PGDATA}
+#+END_SRC
+
+#+BEGIN_SRC sh
+export POSTGRESQL_LOG_DIR=~/postgresql_log/
+rm -rf ${POSTGRESQL_LOG_DIR}
+mkdir -p ${POSTGRESQL_LOG_DIR}
+ls ${POSTGRESQL_LOG_DIR}
+
+#+END_SRC
+
+** Change config
+*** postgresql.conf
+emacs ${PGDATA}/postgresql.conf
+listen_addresses = '*'
+max_connections = 224
+*** pg_hba.conf
+emacs ${PGDATA}/pg_hba.conf
+host   all   all   192.168.88.1/32   trust
+
+** Start PostgresSQL
+#+begin_src sh
+export PGDATA=~/postgresql_data/
+export POSTGRESQL_LOG_DIR=~/postgresql_log/
+ls ${PGDATA}
+ls ${POSTGRESQL_LOG_DIR}
+pg_ctl -D ${PGDATA} -l ${POSTGRESQL_LOG_DIR}/mylog start
+pg_ctl status
+#+end_src
+
+** Stop PostgresSQL
+#+begin_src sh
+pg_ctl stop
+#+end_src
+
+** Create first DB with createdb in PostgreSQL
+#+begin_src sh
+createuser --host=localhost --superuser wangjia
+createdb --host=localhost my_db --owner wangjia
+psql --host=localhost --list
+#+end_src
+
+** Use PostgreSQL
+*** Local access
+#+begin_src sh
+## connect to LOCAL PostgreSQL
+psql --host=localhost --dbname=my_db
+\q
+
+## Run on Mac OS X with pgAdmin3
+/Applications/pgAdmin3.app/Contents/SharedSupport/psql \
+     --username=wangjia --host=192.168.88.101 --dbname=my_db
+psql --username=wangjia --host=192.168.88.101 --dbname=my_db
+#+end_src
+
+** Demo PostgreSQL
+#+begin_src sql
+-- list all tables in PostgreSQL
+SELECT * FROM pg_tables;
+
+-- create demo_table
+CREATE TABLE demo_table (demo_column int, another int);
+
+-- find all tables
+SELECT table_name, table_schema
+FROM information_schema.tables
+WHERE table_schema = 'public';
+
+-- select
+SELECT * FROM demo_table;
+
+-- insert some data
+INSERT INTO demo_table VALUES (555, 777);
+INSERT INTO demo_table VALUES (888, 666);
+
+-- query again
+SELECT * FROM demo_table;
+#+end_src
+
+** Demo PostgreSQL Erlang Client
+#+begin_src sh
+## build PostgreSQL Erlang Client
+cd ~/Erlang/PostgreSQL
+git clone https://github.com/wg/epgsql.git
+cd epgsql
+make
+cd ..
+#+end_src
+
+verify library
+
+#+begin_src sh
+erl -pa epgsql/ebin
+%% Connect to a non-exisintg DB
+pgsql:connect("127.0.0.1", "wangjia", "", [{database, "non_existing_db"}]).
+
+%% Connect to an existing DB
+{ok, Conn} = pgsql:connect("192.168.88.101", "wangjia", "", [{database, "my_db"}]).
+q().
+
+cd ~/Erlang/PostgreSQL
+erl -pa epgsql/ebin
+c(demo_client).
+demo_client:default_connection().
+f(), C = v(-1), pgsql:close(C).
+demo_client:demo_other_host_connection().
+f(), C = v(-1), pgsql:close(C).
+
+%% Demo how to use Erlang-PostgreSQL client interact with PostgreSQL
+demo_client:demo_simple_connection().
+demo_client:demo_get_table_spec().
+q().
+#+end_src
