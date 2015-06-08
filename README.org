@@ -37,10 +37,31 @@ curl -v ifconfig.me/all.json -H "Accept-charset: utf-8"
 netstat -tnl
 #+END_SRC
 * Vagrant
-** Ubuntu 14.04
+** Basic Workflow - Demo with default Ubuntu 14.04
 #+BEGIN_SRC sh
 cd ~/Super/VMs/Ubuntu14.04
+
+## Start VM
 vagrant up
+
+## Ping to verify it's running
 ping 192.168.33.10
+
+## Connect to VM
 vagrant ssh
+
+## new command
+tree
+sudo apt-get install tree
+tree
+
+## Disconnect
+exit
+
+## Stop VM
+vagrant halt
+
+## Destroy VM
+vagrant destroy
+y
 #+END_SRC
