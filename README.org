@@ -142,8 +142,11 @@ psql --host=localhost --list
 ## connect to LOCAL PostgreSQL
 psql --host=localhost --dbname=my_db
 \q
+#+end_src
 
-## Run on Mac OS X with pgAdmin3
+*** Remote access
+Run on Mac OS X with pgAdmin3
+#+begin_src sh
 /Applications/pgAdmin3.app/Contents/SharedSupport/psql \
      --username=wangjia --host=192.168.88.101 --dbname=my_db
 psql --username=wangjia --host=192.168.88.101 --dbname=my_db
