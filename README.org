@@ -31,3 +31,16 @@ curl -v ifconfig.me/all.json -H "Accept-charset: utf-8"
 * resty
 
 * Charles
+
+* Linux Commands
+#+BEGIN_SRC sh
+netstat -tnl
+#+END_SRC
+* Vagrant
+** Ubuntu 14.04
+#+BEGIN_SRC sh
+cd ~/Super/VMs/Ubuntu14.04
+vagrant up
+ping 192.168.33.10
+vagrant ssh
+#+END_SRC
