@@ -35,6 +35,9 @@ curl -v ifconfig.me/all.json -H "Accept-charset: utf-8"
 * Linux Commands
 #+BEGIN_SRC sh
 netstat -tnl
+
+## 32-bit or 64-bit ubuntu
+uname -a
 #+END_SRC
 * Vagrant
 ** Basic Workflow - Demo with default Ubuntu 14.04
