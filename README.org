@@ -213,3 +213,115 @@ demo_client:demo_simple_connection().
 demo_client:demo_get_table_spec().
 q().
 #+end_src
+* AWS
+** EC2 basics
+#+BEGIN_SRC sh
+## connect
+ssh -i ${AWS_FILE} ${AWS_HOST}
+
+## copy files
+scp -i ${AWS_FILE} hello.txt ${AWS_HOST}:/home/ubuntu
+#+END_SRC
+
+** Check memory
+free -m
+
+Today, on my micro EC2 it looks like:
+#+BEGIN_QUOTE
+free -m
+             total       used       free     shared    buffers     cached
+Mem:           992        744        247          0        149        478
+-/+ buffers/cache:        116        875
+Swap:            0          0          0
+#+END_QUOTE
+http://www.linuxatemyram.com/
+
+How do I see how much free ram I really have?
+(free/buffers/cache) => 875
+
+** Install software for an Erlang environment
+sudo apt-get update
+sudo apt-get install erlang-base tree emacs make
+
+** Change timezone on Ubuntu
+#+BEGIN_SRC sh
+date
+sudo timedatectl list-timezones | grep CET
+sudo timedatectl list-timezones | grep Stockholm
+Europe/Stockholm
+sudo timedatectl set-timezone Europe/Stockholm
+#+END_SRC
+internally, it did
+ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+
+** EBS Volume
+*** 0, Current Settings:
+#+BEGIN_SRC sh
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+#+END_SRC
+NAME    FSTYPE SIZE MOUNTPOINT LABEL
+xvda             8G
+└─xvda1 ext4     8G /          cloudimg-rootfs
+
+*** 1, Check EC2 zone
+EC2 Zone -> eu-central-1a
+
+*** 2, Create Volume
+
+*** 3, Attach Volume
+Select the Volume just created and 'Action' -> Attach Volume
+
+*** 4, Check disks with lsblk and dmesg
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+dmesg
+"xvdf: unknown partition table"
+
+*** 5, use fdisk to create partition
+#+BEGIN_SRC sh
+sudo fdisk /dev/xvdf
+m        ## help
+p        ## print
+n        ## add new partition
+p        ## primary
+1        ## 1 partition followed with default first sector and last sector
+
+
+p        ## print partition again to check
+w        ## write the partition
+#+END_SRC
+
+#+BEGIN_QUOTE
+sudo lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL
+NAME    FSTYPE SIZE MOUNTPOINT LABEL
+xvda             8G
+└─xvda1 ext4     8G /          cloudimg-rootfs
+xvdf             2G
+└─xvdf1          2G
+#+END_QUOTE
+
+*** 6, Use mkfs to create file system on partition
+#+BEGIN_SRC sh
+sudo mkfs -t ext4 /dev/xvdf1
+#+END_SRC
+
+*** 7, mount to use it
+#+BEGIN_SRC sh
+sudo mkdir /data
+
+## Check current mount
+df
+
+## mount new disk
+sudo mount /dev/xvdf1 /data
+df -h
+#+END_SRC
+
+*** 8, Add mount to fstab to make it available after reboot
+#+BEGIN_SRC sh
+sudo emacs /etc/fstab
+/dev/xvdf1    /data    /ext4    defaults    0    0
+#+END_SRC
+
+*** 9, write some data to new disk to test it
+chown ubuntu:ubuntu /data
+echo "hello, world" > /data/hello.txt
