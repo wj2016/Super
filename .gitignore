@@ -10,3 +10,4 @@ rel/example_project
 .rebar
 *~
 .vagrant
+.DS_Store
