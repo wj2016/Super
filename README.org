@@ -254,6 +254,15 @@ sudo timedatectl set-timezone Europe/Stockholm
 internally, it did
 ln -sf /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
+** Change hostname on Ubuntu
+#+BEGIN_SRC sh
+sudo emacs /etc/hostname
+erlang-dev-server
+
+sudo emacs /etc/hosts
+127.0.1.1 erlang-dev-server
+sudo hostname erlang-dev-server
+#+END_SRC
 ** EBS Volume
 *** 0, Current Settings:
 #+BEGIN_SRC sh
