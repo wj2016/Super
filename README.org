@@ -38,7 +38,17 @@ netstat -tnl
 
 ## 32-bit or 64-bit ubuntu
 uname -a
+
 #+END_SRC
+
+* Mac Commands
+#+BEGIN_SRC sh
+## show PID listening on a specific port
+lsof -n -i4TCP:8080 | grep LISTEN
+
+#+END_SRC
+
+
 * Vagrant
 ** Basic Workflow - Demo with default Ubuntu 14.04
 #+BEGIN_SRC sh
