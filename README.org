@@ -322,7 +322,11 @@ df -h
 *** 8, Add mount to fstab to make it available after reboot
 #+BEGIN_SRC sh
 sudo emacs /etc/fstab
+/dev/xvdf1	/data	ext4	defaults,nofail,nobootwait	0	0
+
+## Dangerous way, if mount fails, I can't ssh to the intance anymore.
 /dev/xvdf1	/data	ext4	defaults	0	0
+
 #+END_SRC
 
 *** 9, write some data to new disk to test it
