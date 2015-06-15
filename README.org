@@ -49,7 +49,34 @@ lsof -n -i4TCP:8080 | grep LISTEN
 #+END_SRC
 
 
-* Vagrant
+* Vagrant VMs
+VM and IP address table
+| VM          |             IP |
+|-------------+----------------|
+| Ubuntu14.04 | 192.168.55.100 |
+| PostgreSQL  | 192.168.88.101 |
+| ErlangDev1  | 192.168.99.111 |
+| ErlangDev2  | 192.168.99.112 |
+|             |                |
+
+** Erlang nodes
+#+BEGIN_SRC sh
+cd ~/Super/VMs/ErlangDev1
+vagrant up
+vagrant ssh
+
+cd ~/Super/VMs/ErlangDev2
+vagrant up
+vagrant ssh
+
+ping dev1.wangjia.com -c 4
+ping dev2.wangjia.com -c 4
+
+erl -name dev111 -setcookie abc
+erl -name dev222 -setcookie abc
+net_adm:ping('dev111@dev1.wangjia.com').
+nodes().
+#+END_SRC
 ** Basic Workflow - Demo with default Ubuntu 14.04
 #+BEGIN_SRC sh
 cd ~/Super/VMs/Ubuntu14.04
