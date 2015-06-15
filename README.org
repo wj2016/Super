@@ -58,7 +58,6 @@ VM and IP address table
 | ErlangDev1  | 192.168.99.111 |
 | ErlangDev2  | 192.168.99.112 |
 |             |                |
-
 ** Erlang nodes
 #+BEGIN_SRC sh
 cd ~/Super/VMs/ErlangDev1
@@ -104,6 +103,12 @@ vagrant halt
 ## Destroy VM
 vagrant destroy
 y
+#+END_SRC
+** Stop all running VMs
+#+BEGIN_SRC sh
+VBoxManage list runningvms
+vagrant global-status
+vagrant global-status | grep virtualbox | cut -c 1-9 | while read line; do echo $line; vagrant halt $line; done;
 #+END_SRC
 * PostgreSQL
 ** Install PostgreSQL on Ubuntu 14.04
