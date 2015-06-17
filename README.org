@@ -46,6 +46,8 @@ uname -a
 ## show PID listening on a specific port
 lsof -n -i4TCP:8080 | grep LISTEN
 
+## listen on a port
+nc -l 1234
 #+END_SRC
 
 
