@@ -385,3 +385,10 @@ sudo emacs /etc/fstab
 *** 9, write some data to new disk to test it
 chown ubuntu:ubuntu /data
 echo "hello, world" > /data/hello.txt
+
+* Git
+#+BEGIN_SRC sh
+## Only show first line in commit comments
+git log --pretty=oneline --abbrev-commit
+
+#+END_SRC
