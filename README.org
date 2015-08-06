@@ -394,3 +394,81 @@ git log --pretty=oneline --abbrev-commit
 #+END_SRC
 
 * C++
+* LevelDB in Xcode
+** Step by Step
+#+BEGIN_SRC sh
+wget https://leveldb.googlecode.com/files/leveldb-1.14.0.tar.gz
+tar xzf leveldb-1.14.0.tar.gz
+
+rm db/leveldb_main.cc
+rm db/db_bench.cc
+
+find . -name '*test*.cc' -exec rm {} \;
+find . -name '*test*.c' -exec rm {} \;
+find . -name '*main*.cc' -exec rm {} \;
+find . -name '*bench*.cc' -exec rm {} \;
+rm AUTHORS LICENSE Makefile NEWS README TODO
+rm build_detect_platform
+rm -rf doc issues
+#+END_SRC
+
+** Xcode Project
+1, new C++ project
+2, drag leveldb-1.14.0 into project
+3, add search paths
+Project => Search Pahts => User Header Search Paths +
+$(PROJECT_DIR)/leveldb-1.14.0/include    ## For client code
+$(PROJECT_DIR)/leveldb-1.14.0            ## For library code
+4, C++ Flags
+Project => Apple LLVM 5.1 - Custom Compiler Flags => Other C++ Flags +
+-fno-builtin-memcmp
+-DLEVELDB_PLATFORM_POSIX
+-DOS_MACOSX
+
+** demo client code
+#+BEGIN_SRC cpp
+#include <assert.h>
+#include <iostream>
+#include "db.h" // ${leveldb}/include/leveldb/db.h
+
+using namespace std;
+
+int main(int argc,char * argv[])
+{
+    // Open/Create db
+    leveldb::DB* db;
+    leveldb::Options options;
+    options.create_if_missing = true;
+
+    std::string dbpath = "/tmp/demodb.db";
+    leveldb::Status status = leveldb::DB::Open(options, dbpath, &db);
+    assert(status.ok());
+    cout << "Open db OK" << std::endl;
+
+    // Data to write to DB
+    std::string key = "wangjia";
+    std::string value = "wangjia@gamil.com";
+
+    // write to leveldb
+    leveldb::Status s ;
+    s = db->Put(leveldb::WriteOptions(), key, value); // insert key-value pair
+
+    // read from leveldb
+    std::string value2;
+    s = db->Get(leveldb::ReadOptions(), key, &value2); // get value back from DB
+
+    cout << value2 << std::endl;
+    delete db;
+
+    return 0;
+}
+#+END_SRC
+
+** How did I Find compile flags
+#+BEGIN_SRC sh
+cd leveldb-1.14.0
+
+## Check what compile flags used
+./build_detect_platform tempfile.txt .
+cat tempfile.txt
+#+END_SRC
