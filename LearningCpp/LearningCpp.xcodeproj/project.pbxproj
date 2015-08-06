@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95C816CE1B73CE2100024B70 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C816CD1B73CE2100024B70 /* main.cpp */; };
-		95C816D01B73CE2100024B70 /* LearningCpp.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = 95C816CF1B73CE2100024B70 /* LearningCpp.1 */; };
+		95C816D81B73CEC600024B70 /* demo_virtual_destructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C816D61B73CEC600024B70 /* demo_virtual_destructor.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -18,7 +17,6 @@
 			dstPath = /usr/share/man/man1/;
 			dstSubfolderSpec = 0;
 			files = (
-				95C816D01B73CE2100024B70 /* LearningCpp.1 in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
@@ -26,8 +24,7 @@
 
 /* Begin PBXFileReference section */
 		95C816CA1B73CE2100024B70 /* LearningCpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = LearningCpp; sourceTree = BUILT_PRODUCTS_DIR; };
-		95C816CD1B73CE2100024B70 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		95C816CF1B73CE2100024B70 /* LearningCpp.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = LearningCpp.1; sourceTree = "<group>"; };
+		95C816D61B73CEC600024B70 /* demo_virtual_destructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_destructor.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,8 +57,7 @@
 		95C816CC1B73CE2100024B70 /* LearningCpp */ = {
 			isa = PBXGroup;
 			children = (
-				95C816CD1B73CE2100024B70 /* main.cpp */,
-				95C816CF1B73CE2100024B70 /* LearningCpp.1 */,
+				95C816D61B73CEC600024B70 /* demo_virtual_destructor.cpp */,
 			);
 			path = LearningCpp;
 			sourceTree = "<group>";
@@ -117,7 +113,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95C816CE1B73CE2100024B70 /* main.cpp in Sources */,
+				95C816D81B73CEC600024B70 /* demo_virtual_destructor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
