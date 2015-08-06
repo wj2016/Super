@@ -4,6 +4,7 @@ using namespace std;
 
 /*
  * 演示virtual destructor
+ * Base类的destructor为什么应该是virtual的
  */
 class Base
 {
@@ -41,7 +42,7 @@ public:
     }
 };
 
-int main()
+int main888()
 {
     std::cout << "====" << std::endl;
     Derived *pd = new Derived; // 子类析构 => 父类析构
