@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		95C817961B75585B00024B70 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C817951B75585B00024B70 /* main.cpp */; };
+		95C817A31B7558EB00024B70 /* demo_default_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C8179E1B7558EB00024B70 /* demo_default_methods.cpp */; };
+		95C817A41B7558EB00024B70 /* demo_virtual_destructor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C8179F1B7558EB00024B70 /* demo_virtual_destructor.cpp */; };
+		95C817A51B7558EB00024B70 /* demo_virtual_inheritance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C817A01B7558EB00024B70 /* demo_virtual_inheritance.cpp */; };
+		95C817A61B7558EB00024B70 /* demo_virtual_space.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C817A11B7558EB00024B70 /* demo_virtual_space.cpp */; };
+		95C817A71B7558EB00024B70 /* demo_virtual_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C817A21B7558EB00024B70 /* demo_virtual_table.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +28,11 @@
 
 /* Begin PBXFileReference section */
 		95C817921B75585B00024B70 /* DemoCpp */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = DemoCpp; sourceTree = BUILT_PRODUCTS_DIR; };
-		95C817951B75585B00024B70 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		95C8179E1B7558EB00024B70 /* demo_default_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_default_methods.cpp; sourceTree = "<group>"; };
+		95C8179F1B7558EB00024B70 /* demo_virtual_destructor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_destructor.cpp; sourceTree = "<group>"; };
+		95C817A01B7558EB00024B70 /* demo_virtual_inheritance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_inheritance.cpp; sourceTree = "<group>"; };
+		95C817A11B7558EB00024B70 /* demo_virtual_space.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_space.cpp; sourceTree = "<group>"; };
+		95C817A21B7558EB00024B70 /* demo_virtual_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_table.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +65,11 @@
 		95C817941B75585B00024B70 /* DemoCpp */ = {
 			isa = PBXGroup;
 			children = (
-				95C817951B75585B00024B70 /* main.cpp */,
+				95C8179E1B7558EB00024B70 /* demo_default_methods.cpp */,
+				95C8179F1B7558EB00024B70 /* demo_virtual_destructor.cpp */,
+				95C817A01B7558EB00024B70 /* demo_virtual_inheritance.cpp */,
+				95C817A11B7558EB00024B70 /* demo_virtual_space.cpp */,
+				95C817A21B7558EB00024B70 /* demo_virtual_table.cpp */,
 			);
 			path = DemoCpp;
 			sourceTree = "<group>";
@@ -113,7 +125,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				95C817961B75585B00024B70 /* main.cpp in Sources */,
+				95C817A51B7558EB00024B70 /* demo_virtual_inheritance.cpp in Sources */,
+				95C817A71B7558EB00024B70 /* demo_virtual_table.cpp in Sources */,
+				95C817A61B7558EB00024B70 /* demo_virtual_space.cpp in Sources */,
+				95C817A31B7558EB00024B70 /* demo_default_methods.cpp in Sources */,
+				95C817A41B7558EB00024B70 /* demo_virtual_destructor.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
