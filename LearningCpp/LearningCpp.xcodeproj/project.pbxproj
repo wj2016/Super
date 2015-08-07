@@ -11,6 +11,7 @@
 		95C816DA1B73D1FE00024B70 /* demo_virtual_space.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C816D91B73D1FE00024B70 /* demo_virtual_space.cpp */; };
 		95C816DE1B73D5A800024B70 /* demo_virtual_inheritance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C816DC1B73D5A800024B70 /* demo_virtual_inheritance.cpp */; };
 		95C816E11B73F8E500024B70 /* demo_default_methods.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C816DF1B73F8E500024B70 /* demo_default_methods.cpp */; };
+		95C817881B754D1500024B70 /* demo_virtual_table.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 95C817861B754D1500024B70 /* demo_virtual_table.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +32,7 @@
 		95C816D91B73D1FE00024B70 /* demo_virtual_space.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_space.cpp; sourceTree = "<group>"; };
 		95C816DC1B73D5A800024B70 /* demo_virtual_inheritance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_inheritance.cpp; sourceTree = "<group>"; };
 		95C816DF1B73F8E500024B70 /* demo_default_methods.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_default_methods.cpp; sourceTree = "<group>"; };
+		95C817861B754D1500024B70 /* demo_virtual_table.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_virtual_table.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				95C816D91B73D1FE00024B70 /* demo_virtual_space.cpp */,
 				95C816DC1B73D5A800024B70 /* demo_virtual_inheritance.cpp */,
 				95C816DF1B73F8E500024B70 /* demo_default_methods.cpp */,
+				95C817861B754D1500024B70 /* demo_virtual_table.cpp */,
 			);
 			path = LearningCpp;
 			sourceTree = "<group>";
@@ -123,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95C816DE1B73D5A800024B70 /* demo_virtual_inheritance.cpp in Sources */,
+				95C817881B754D1500024B70 /* demo_virtual_table.cpp in Sources */,
 				95C816DA1B73D1FE00024B70 /* demo_virtual_space.cpp in Sources */,
 				95C816D81B73CEC600024B70 /* demo_virtual_destructor.cpp in Sources */,
 				95C816E11B73F8E500024B70 /* demo_default_methods.cpp in Sources */,
@@ -235,6 +239,7 @@
 				95C816D51B73CE2100024B70 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

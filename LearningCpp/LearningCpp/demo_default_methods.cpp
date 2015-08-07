@@ -44,7 +44,7 @@ void print2(A& obj)
     std::cout << "AAA: " << obj.a << std::endl;
 }
 
-int main()
+int main901()
 {
     std::cout << "====" << std::endl;
     A *pa = new A;
