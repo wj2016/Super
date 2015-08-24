@@ -24,3 +24,12 @@ task run_my_simple_suite(type: Test) {
         suites "src/main/resources/my_simple_test_suite.xml"
     }
 }
+
+task demo_properties << {
+    if (project.hasProperty("my_prop_var")) {
+        print "My prop var: "
+        print my_prop_var
+    } else {
+        println "no my prop"
+    }
+}
