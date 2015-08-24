@@ -18,3 +18,9 @@ dependencies {
 task helloWorld << {
     println "Hello, world!"
 }
+
+task run_my_simple_suite(type: Test) {
+    useTestNG() {
+        suites "src/main/resources/my_simple_test_suite.xml"
+    }
+}

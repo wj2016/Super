@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="My Regression Suite" verbose="1">
+    <test name="Simple Test" enabled="true">
+        <classes>
+            <class name="SimplePlusTest" />
+        </classes>
+    </test>
+</suite>
