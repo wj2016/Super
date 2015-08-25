@@ -41,3 +41,10 @@ task demo_properties << {
         println "no my prop"
     }
 }
+
+// 增加一个删除文件的task来演示任务之间的依赖
+task delete_txt_files << {
+    new File(".").eachFileMatch(~/.*.txt/) { file ->
+        file.delete()
+    }
+}
