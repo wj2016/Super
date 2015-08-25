@@ -472,3 +472,40 @@ cd leveldb-1.14.0
 ./build_detect_platform tempfile.txt .
 cat tempfile.txt
 #+END_SRC
+* Gradle
+** Basics
+cd ~/Super/DemoGradle
+gradle -v
+gradle tasks
+gradle helloWorld
+gradle --help
+
+## -P to define project-prop
+gradle demo_properties
+gradle demo_properties -Pmy_prop_var=5888
+
+** Java
+*** Compile
+gradle tasks --all
+gradle clean
+find . -name '*.class'
+
+## only compile source code
+gradle classes
+gradle compileJava
+find . -name '*.class'
+
+## compile source code and test classes
+gradle testClasses
+gradle compileTestJava
+find . -name '*.class'
+
+*** JAR
+gradle jar
+find . -name '*.jar'
+java -cp build/libs/DemoGradle-1.0.jar SimplePlus
+rm simple_plus_main.txt
+
+*** TestNG
+gradle cleanTest run_my_simple_suite
+gradle cleanTest run_my_simple_suite -Pmy_output_file_name=abc88.txt
