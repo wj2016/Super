@@ -28,7 +28,10 @@ task run_my_simple_suite(type: Test) {
     } else {
         println "HELP!!!!======="
     }
+
     useTestNG() {
+        // show standard out and standard error of the test JVM(s) on the console
+        testLogging.showStandardStreams = true
         suites "src/main/resources/my_simple_test_suite.xml"
     }
 }
