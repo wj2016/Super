@@ -20,6 +20,14 @@ task helloWorld << {
 }
 
 task run_my_simple_suite(type: Test) {
+    // 用不同的名字将来回看起来更清晰
+    if (project.hasProperty("my_output_file_name")) {
+        print "filename: "
+        println my_output_file_name
+        systemProperty("txt_file_name", my_output_file_name)
+    } else {
+        println "HELP!!!!======="
+    }
     useTestNG() {
         suites "src/main/resources/my_simple_test_suite.xml"
     }

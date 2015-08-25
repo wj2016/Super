@@ -25,8 +25,12 @@ public class SimplePlusTest {
     @Test
     public void test_case_simple() {
         System.out.println("test case");
+        String filename = System.getProperty("txt_file_name");
+        if (filename == null) {
+            filename = "default_output_file.txt";
+        }
         try {
-            Files.createFile(Paths.get("abc.txt"));
+            Files.createFile(Paths.get(filename));
         } catch (IOException e) {
             e.printStackTrace();
         }
