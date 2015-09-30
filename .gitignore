@@ -73,3 +73,4 @@ target/
 
 .gradle
 *.txt
+*.out

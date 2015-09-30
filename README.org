@@ -387,10 +387,24 @@ chown ubuntu:ubuntu /data
 echo "hello, world" > /data/hello.txt
 
 * Git
+** Config
+#+BEGIN_SRC sh
+git config --global user.name
+git config --global user.email
+cat ~/.gitconfig
+git config --global --list
+
+## alias
+git config --global alias.s "status -s"
+git config --global alias.lg "log --oneline --all --graph --decorate"
+git s
+git lg
+#+END_SRC
+
+** Misc
 #+BEGIN_SRC sh
 ## Only show first line in commit comments
 git log --pretty=oneline --abbrev-commit
-
 #+END_SRC
 
 * C++
@@ -509,3 +523,13 @@ rm simple_plus_main.txt
 *** TestNG
 gradle cleanTest run_my_simple_suite
 gradle cleanTest run_my_simple_suite -Pmy_output_file_name=abc88.txt
+* Objective-C Runtime
+** otool
+#+BEGIN_SRC sh
+cd ~/Super/ObjcRuntime
+
+gcc -ObjC -framework Foundation simple1.m && otool -L a.out
+
+## /usr/lib/libobjc.A.dylib
+gcc -ObjC -framework Foundation simple2.m && otool -L a.out
+#+END_SRC
