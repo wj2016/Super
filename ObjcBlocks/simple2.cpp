@@ -23,7 +23,7 @@ struct __block_impl {
 struct __main_block_impl_0 {
     struct __block_impl impl;
     struct __main_block_desc_0* Desc;
-    __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) {
+    __main_block_impl_0(void *fp, struct __main_block_desc_0 *desc, int flags=0) { // 这里是构造函数，C++里可以用struct来表示类的概念
         impl.isa = &_NSConcreteStackBlock;
         impl.Flags = flags;
         impl.FuncPtr = fp;
