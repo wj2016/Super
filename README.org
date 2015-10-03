@@ -533,3 +533,20 @@ gcc -ObjC -framework Foundation simple1.m && otool -L a.out
 ## /usr/lib/libobjc.A.dylib
 gcc -ObjC -framework Foundation simple2.m && otool -L a.out
 #+END_SRC
+
+* Objective-C Blocks
+** Convert Objective-C code to C++ code
+simple.m => simple.cpp => simple2.cpp
+#+BEGIN_SRC sh
+cd ~/Super/ObjcBlocks
+
+## convert Objective-C to C++ (simple.m => simple.cpp)
+clang -fobjc-arc -rewrite-objc simple.m
+
+## fix simple.cpp (simple.cpp => simple2.cpp)
+## See comments in simple2.cpp
+
+clang simple2.cpp -o simple2.out
+./simple2.out
+rm -f *~ *.out
+#+END_SRC
